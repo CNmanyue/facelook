@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+<!-- property元素用来指定需要容器注入的属性，person属性需要容器注入，此处是设置注入， 因此Greeting类必须拥有setPerson方法 -->
+<!-- 加载jdbc.properties -->
+	<bean id="jdbcProperties"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<value>classpath:jdbc.properties</value>
+		</property>
+	</bean>
+	<!-- 配置dataSource -->
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${jdbc.driver}"></property>
+		<property name="url" value="${jdbc.url}"></property>
+		<property name="username" value="${jdbc.username}"></property>
+		<property name="password" value="${jdbc.password}"></property>
+	</bean>
+	<!-- jdbc扩展器 -->
+<!-- 	<bean id="nativeJdbcExtractor" class="org.springframework.jdbc.support.nativejdbc.CommonsDbcpNativeJdbcExtractor" /> -->
+	<bean id="lobHandler" class="org.springframework.jdbc.support.lob.DefaultLobHandler">
+<!-- 		<property name="nativeJdbcExtractor" ref="nativeJdbcExtractor" /> -->
+		</bean>
+	<!-- SessionFactory -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<!-- 数据源部分 -->
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="lobHandler" ref="lobHandler"/>
+		<!-- 设置Hibernate的常用属性 -->
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.search.autoregister_listeners">false</prop>
+				<prop key="hibernate.show_sql">true</prop>
+			</props>
+		</property>
+		<!-- 映射文件部分 -->
+		<property name="mappingResources">
+			<list>
+				<value>cn/my/facelook/entity/FacelookAlbum.hbm.xml</value>
+				<value>cn/my/facelook/entity/FacelookMark.hbm.xml</value>
+				<value>cn/my/facelook/entity/FacelookPhoto.hbm.xml</value>
+				<value>cn/my/facelook/entity/FacelookComment.hbm.xml</value>
+				<value>cn/my/facelook/entity/FacelookActivity.hbm.xml</value>
+				<value>cn/my/facelook/entity/FacelookUser.hbm.xml</value>
+				<value>cn/my/facelook/entity/FacelookRelation.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+	<!-- 声明式事务 -->
+	<bean id="txManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+	
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<tx:advice id="txAdvice" transaction-manager="txManager">
+		<!-- 对哪些方法，采取什么样的事务策略 -->
+		<tx:attributes>
+			<tx:method name="get*" read-only="true" propagation="SUPPORTS" />
+			<tx:method name="find*" read-only="true" propagation="SUPPORTS" />
+			<tx:method name="select*" read-only="true" propagation="SUPPORTS" />
+			<tx:method name="query*" read-only="true" propagation="SUPPORTS" />
+			<tx:method name="*" propagation="REQUIRED" />
+		</tx:attributes>
+	</tx:advice>
+	<aop:config>
+		<aop:pointcut expression="execution(* cn.my.facelook.biz.*.*(..))" id="bizMethods" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="bizMethods" />
+	</aop:config>
+</beans>

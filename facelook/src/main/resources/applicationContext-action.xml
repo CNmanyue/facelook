@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+	<bean id="userAction" class="cn.my.facelook.action.UserAction" scope="prototype">
+		<property name="fuBiz" ref="fuBiz"></property>
+	</bean>
+	<bean id="albumAction" class="cn.my.facelook.action.AlbumAction" scope="prototype">
+		<property name="faBiz" ref="faBiz"></property>
+	</bean>
+	<bean id="photoAction" class="cn.my.facelook.action.PhotoAction" scope="prototype">
+		<property name="fpBiz" ref="fpBiz"></property>
+		<property name="faBiz" ref="faBiz"></property>
+		<property name="facBiz" ref="facBiz"></property>
+	</bean>
+	<bean id="commentAction" class="cn.my.facelook.action.CommentAction" scope="prototype">
+		<property name="fcBiz" ref="fcBiz"></property>
+		<property name="fpBiz" ref="fpBiz"></property>
+		<property name="facBiz" ref="facBiz"></property>
+	</bean>
+	<bean id="activityAction" class="cn.my.facelook.action.ActivityAction" scope="prototype">
+		<property name="facBiz" ref="facBiz"></property>
+	</bean>
+	<bean id="developerAction" class="cn.my.facelook.action.DeveloperAction" scope="prototype">
+		<property name="fpBiz" ref="fpBiz"></property>
+	</bean>
+</beans>

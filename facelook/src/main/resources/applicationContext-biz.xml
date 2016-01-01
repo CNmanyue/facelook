@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+	<bean id="fuBiz" class="cn.my.facelook.biz.impl.FacelookUserBizImpl">
+		<property name="fuDao" ref="fuDao"></property>
+	</bean>
+	<bean id="faBiz" class="cn.my.facelook.biz.impl.FacelookAlbumBizImpl">
+		<property name="faDao" ref="faDao"></property>
+	</bean>
+	<bean id="fpBiz" class="cn.my.facelook.biz.impl.FacelookPhotoBizImpl">
+		<property name="fpDao" ref="fpDao"></property>
+	</bean>
+	<bean id="fcBiz" class="cn.my.facelook.biz.impl.FacelookCommentBizImpl">
+		<property name="fcDao" ref="fcDao"></property>
+	</bean>
+	<bean id="facBiz" class="cn.my.facelook.biz.impl.FacelookActivityBizImpl">
+		<property name="facDao" ref="facDao"></property>
+	</bean>
+</beans>

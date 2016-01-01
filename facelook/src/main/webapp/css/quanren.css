@@ -1,0 +1,199 @@
+﻿div.imgContainer{
+	float:left;
+	position:relative;
+}
+#photo-box a{
+	background:#0099CC none repeat scroll 0 0;
+	color:#FFFFFF;
+	display:block;
+	font-size:14px;
+	font-weight:bold;
+	padding:5px;
+	text-decoration:none;
+	float:left;
+	margin:2px;
+
+}
+.photo-marker{
+    top:0;
+    left:0;
+    width:100px;
+    height:100px;
+    cursor:move;
+    float:left;
+    position:absolute;
+}
+.photo-marker .frame{
+    display: none;
+    *display : block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    filter: alpha( opacity = 0 );
+}
+.photo-marker span,.photo-marker .ui-resizable-handle{
+	position:absolute;
+	line-height:0;
+	font-size:0;
+}
+.photo-marker .t,.photo-marker .b{
+    height:2px;
+    width:100%;
+    left:0;
+    background:url(../images/marqueeHoriz.gif) repeat-x left top;
+}
+.photo-marker .l,.photo-marker .r{
+    width:2px;
+    height:100%;
+    top:0;
+    background:url(../images/marqueeVert.gif) repeat-y left top;
+}
+.photo-marker .b{
+    bottom:0;
+}
+.photo-marker .t,{
+    top:0;
+}
+.photo-marker .l{
+    left:0;
+}
+.photo-marker .r{
+    right:0;
+}
+.photo-marker .ui-resizable-handle{
+    width:8px;
+    height:8px;
+    background:url(../images/marker-square.gif) no-repeat left top;
+    cursor:pointer;
+}
+.photo-marker .ui-resizable-n {
+    cursor: n-resize;
+    top: -3px;
+    left: 50%;
+     margin-left:-3px;
+}
+.photo-marker .ui-resizable-e {
+    cursor: e-resize;
+    top: 50%;
+    margin-top:-3px;
+    right: -3px;
+}
+.photo-marker .ui-resizable-s{
+    cursor: n-resize;
+    left: 50%;
+    margin-left:-3px;
+    bottom: -3px;
+}
+.photo-marker .ui-resizable-w{
+    cursor: e-resize;
+    top: 50%;
+     margin-top:-3px;
+    left: -3px;
+}
+.photo-marker .ui-resizable-ne{
+    cursor:sw-resize;
+    right:-3px;
+    top:-3px;
+}
+.photo-marker .ui-resizable-nw{
+    cursor:nw-resize;
+    left:-3px;
+    top:-3px;
+}
+.photo-marker .ui-resizable-sw{
+    cursor:sw-resize;
+    left:-3px;
+    bottom:-3px;
+}
+.photo-marker .ui-resizable-se{
+    cursor:se-resize;
+    right:-3px;
+    bottom:-3px;
+}
+.okPosition{
+	background:#fff;
+	border:1px #999999 solid;
+	height:auto;
+	width:200px;
+	color:#333;
+	font-size:12px;
+	display:none;
+	float:left;
+	text-align:center;
+	position:absolute;
+	left:106px;
+	top:0px;
+	filter:alpha(opacity=90);
+	opacity:0.9;
+	-moz-opacity: 0.9;
+}
+.okPosition input{
+	width:70%;
+	border:1px #999999 solid;
+	margin:4px;
+}
+.okPosition button{
+	height:20px;
+	background:#0080FF;
+	padding:0 16px !important;
+	padding:0 8px;
+	border-top:1px solid #e8e8e8;
+	border-left:1px solid #e8e8e8;
+	border-bottom:1px solid #737373;
+	border-right:1px solid #737373;
+	color:#fff;
+	overflow:hidden;
+	margin:6px;
+	font-size:12px;
+	*line-height:18px;
+}
+.okPosition .button{
+	background:#eee;
+	margin-left:6px;
+	color:#666666;
+}
+.okPosition .radio{
+	background:#eee;
+	margin-left:6px;
+	width:16px;
+	height:10px;
+	border:0px;
+	cursor:pointer;
+}
+.okFre{
+	background:#eee;
+	width:94%;
+	text-align:left;
+	height:1px;
+	margin:auto;
+	overflow:hidden;
+}
+#imgSide span{
+	color:#ff0000;
+	font-size:12px;
+	cursor:pointer;
+}
+#imgSide li{
+	list-style:none;
+	height:14px;
+	padding-right:4px;
+}
+#imgSide li.del { text-decoration:line-through; }
+
+.divShow{
+	background:url(images/tmbg.gif);
+	position:absolute;	
+}
+.divHtml{
+	width:auto;
+	position:absolute;
+	background:#fff;
+	font-size:12px;
+	filter:alpha(opacity=80);
+	opacity:0.8;
+	-moz-opacity: 0.8;
+	padding:2px;
+}

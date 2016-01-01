@@ -1,0 +1,13 @@
+<filter>
+    <display-name>CharacterFilter</display-name>
+    <filter-name>CharacterFilter</filter-name>
+    <filter-class>cn.jbit.houserent.filtere.CharacterFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>CharacterFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>

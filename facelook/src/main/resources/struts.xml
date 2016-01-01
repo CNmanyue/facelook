@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<!-- 配置属性 -->
+	<constant name="struts.action.excludePattern" value="/dwr.*"/>
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<constant name="struts.ui.theme" value="simple" />
+	<constant name="struts.action.extension" value="action" />
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="false" />
+	<package name="src" extends="struts-default" namespace="/">
+		<action name="user_*" method="{1}" class="userAction">
+			<result name="success" type="redirectAction">activity_getList.action</result>
+			<result name="input">/index.jsp</result>
+		</action>
+		<action name="activity_*" method="{1}" class="activityAction">
+			<result name="home">/home.jsp</result>
+			<result name="input">/index.jsp</result>
+		</action>
+		<action name="album_*" method="{1}" class="albumAction">
+			<result name="success">/album.jsp</result>
+			<result name="input">/error.jsp</result>
+			<result name="create_ok" type="redirect">/album_create_msg.jsp</result>
+			<result name="toUpload">/photo_upload.jsp</result>
+			<result name="toList">/album_list.jsp</result>
+		</action>
+		<action name="photo_*" method="{1}" class="photoAction">
+			<result name="upload_ok">/photo_upload_msg.jsp</result>
+			<result name="input">/error.jsp</result>
+			<result name="toView">/photo_view.jsp</result>
+		</action>
+		<action name="showPhoto" method="showPhotoList" class="photoAction">
+			<result name="photo"  type="stream">
+				<param name="contentType">${photoContentType}</param>
+				<param name="bufferSize">2048</param>
+			</result>
+		</action>
+		<action name="saveComment" method="saveComment" class="commentAction">
+			<result name="comment">/comment.jsp</result>
+		</action>
+		
+		<!-- 
+			删除照片数据
+		 -->
+		 <action name="delete" method="deletePhotos" class="developerAction">
+		 	<result name="index">/index.jsp</result>
+		 	<result name="input">/error.jsp</result>
+		 </action>
+	</package>
+</struts>

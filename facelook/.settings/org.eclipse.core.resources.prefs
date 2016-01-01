@@ -1,0 +1,10 @@
+eclipse.preferences.version=1
+encoding//src/main/java=UTF-8
+encoding//src/main/java/cn/my/facelook/dao/IFacelookActivityDao.java=GBK
+encoding//src/main/java/cn/my/facelook/dao/IFacelookAlbumDao.java=GBK
+encoding//src/main/java/cn/my/facelook/dao/IFacelookCommentDao.java=GBK
+encoding//src/main/java/cn/my/facelook/dao/IFacelookPhotoDao.java=GBK
+encoding//src/main/java/cn/my/facelook/dao/IFacelookUserDao.java=GBK
+encoding//src/main/resources=UTF-8
+encoding//src/test/java=UTF-8
+encoding//src/test/resources=UTF-8
